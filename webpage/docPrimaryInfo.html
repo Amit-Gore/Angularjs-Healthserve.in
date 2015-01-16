@@ -1,0 +1,191 @@
+<div class="container" ng-controller="DoctorController" >
+	<div class="row" id="contentHolder" style="margin-top:50px;" ng-repeat="card in cards">
+				<!-- left profile  -->
+				<div class="col-md-8">
+					<div class="[ panel1 panel1-default ] panel1-google-plus">
+						<div class="row">
+							<div class="col-md-2 pro-pic"><center>
+							<!-- profile image -->
+							<img ng-src="{{card.img}}" title=""/></center>
+							</div>
+							<div class="col-md-6 pro-info">
+							<div itemscope itemtype="http://schema.org/Person">
+							<div itemprop="name"><h4 >{{card.name}}</h4></div>
+							</div>
+
+							
+							<h5 class="pro-deg">{{card.degree | uppercase}}</h5>
+							<p class="green">{{card.about}}</p>
+							</div>
+						</div>
+					</div>
+					
+					<div class="[ panel1 panel1-default ] panel1-google-plus">
+						<div class="row doc_ser">
+							<div class="col-md-4">
+							<!-- Hospital details -->
+							<h4><span class="grey fa fa-building-o"></span> Hospitals </h4>
+							<div class="col-md-12" ng-repeat="location in card.locations"><span style="color:#43b98f"><i class="fa fa-map-marker"></i></span> {{location}}</div>
+							
+							</div>
+							<div class="col-md-4">
+							<h4><span class="grey fa fa-clock-o"></span> Timings </h4>		
+							<p></p>
+							</div>
+							<div class="col-md-4">
+							<h4><span class="grey fa fa-inr"></span> Fees Details</h4>
+							<h3 style="margin-left:25px;">{{card.fees | currency: "": 2 }} / -</h3>							
+							</div>
+						</div>
+					</div>
+					
+					<div class="[ panel1 panel1-default ] panel1-google-plus">
+						<div class="row doc_ser">
+							<!-- Services details -->
+							<h4><span class="grey fa  fa-paper-plane-o"></span>  Services Available </h4>
+						</div>
+						<div class="row doc_ser">
+							<div class="row" ng-show="card.image_service.length">
+								<div class="col-md-4" ng-repeat="service in card.image_service">
+									<center><img ng-src="{{service}}"/> 
+									<!-- <p class="green"> asjdfaisgd</p> </center>  -->
+								</div> 
+							</div>
+							<!-- <div class="col-md-6">
+							<h4><span class="grey fa fa-clock-o"></span> Timings </h4>		
+							<p></p>
+							</div>
+							<div class="col-md-6">
+							<h4><span class="grey fa fa-inr"></span> Fees Details</h4>
+							<p>lhalhasdalhds</p>							
+							</div> -->
+						</div>
+					</div>
+					
+					<div class="[ panel1 panel1-default ] panel1-google-plus">
+					
+						<div class="row   doc_ser">
+							<!-- Specialisation details -->
+							<h4><span class="grey fa  fa-stethoscope"></span>  Specialisation  </h4>
+						</div>
+						<div class="row  doc_ser">
+							<div class="row" ng-show="card.speciality.length">
+								<div class="col-md-4 grey" ng-repeat="spl in card.speciality">
+									<h5>{{spl | uppercase}}	</h5>
+								</div> 
+							</div>
+								
+						</div>
+					</div>
+					
+					<div class="[ panel1 panel1-default ] panel1-google-plus">
+						<div class="row   doc_ser">
+							<!-- Education details -->
+							<h4><span class="grey fa  fa-book"></span> Education Details </h4>
+						</div>
+						<div class="row  doc_ser">
+							<div class="row" ng-show="card.education.length">
+								<div class="col-md-4 grey" ng-repeat="edu in card.education">
+									<h5>{{edu}}	</h5>
+								</div> 
+							</div>
+						</div>
+					</div>
+					
+					
+					<div class="[ panel1 panel1-default ] panel1-google-plus">
+						<div class="row  doc_ser">
+							<!-- Experience details -->
+							<h4><span class="grey fa fa-calendar"></span> Experience </h4>
+						</div>
+						<div class="row  doc_ser">
+							<div class="row" ng-show="card.experience.length">
+								<div class="col-md-4 grey" ng-repeat="experience_details in card.experience">
+									<h5>{{experience_details}}	</h5>
+								</div> 
+							</div>
+						</div>
+					</div>
+					
+					
+					<div class="[ panel1 panel1-default ] panel1-google-plus">
+						<div class="row  doc_ser">
+							<!-- Memberships details -->
+							<h4><span class="grey fa fa-credit-card"></span> Memberships  </h4>
+						</div>
+						<div class="row doc_ser">
+							<div class="row" ng-show="card.Memberships.length">
+								<div class="col-md-4 grey" ng-repeat="membership_details in card.Memberships">
+									<h5>{{membership_details}}	</h5>
+								</div> 
+							</div>
+						</div>
+					</div>
+					
+				</div>
+				<!-- Right profile  -->
+				<div class="col-md-4">
+				<!-- <h4 style="text-align:left">Showing <strong>1002</strong> Results found for <strong>Dr. doctor name </strong> </h4><br> -->
+					
+					<div class="[ panel1 panel1-default ] panel1-google-plus">
+						<div class="bookappointment">
+						<h3><img src="images/st.png" z-index=-1/>Book Appointment</h3>
+						</div>
+						<!-- booking form -->
+						<div class="bo1" ng-controller="formValidation">
+						
+							<form name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate>
+
+								<!-- NAME -->
+								<div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine }">
+									<label>Name *</label>
+									<input type="text" name="name" placeholder="Patient Name" class="form-control" ng-model="user.name" required>
+									<p ng-show="!userForm.name.$invalid " class="help-block">Name is required.</p>
+								</div>
+								
+								<!-- reason -->
+								<div class="form-group" ng-class="{ 'has-error' : userForm.reason.$invalid && !userForm.reason.$pristine }">
+									<label>Appointment Reason *</label>
+									<input type="text" name="reason" placeholder="e.g. symptoms, pain " class="form-control" ng-model="user.reason" required>
+									<p ng-show="!userForm.reason.$invalid " class="help-block">Reason is required for Appointment.</p>
+								</div>
+								
+								
+								<!-- USERNAME -->
+								<!-- <div class="form-group" ng-class="{ 'has-error' : userForm.username.$invalid && !userForm.username.$pristine }">
+									<label>Username</label>
+									<input type="text" name="username" class="form-control" ng-model="user.username" ng-minlength="3" ng-maxlength="8">
+									<p ng-show="userForm.username.$error.minlength" class="help-block">Username is too short.</p>
+									<p ng-show="userForm.username.$error.maxlength" class="help-block">Username is too long.</p>
+								</div> -->
+									
+								<!-- EMAIL -->
+								<div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid }">
+									<label>Email</label>
+									<input type="email" name="email" placeholder="abc@healthserve.in" class="form-control" ng-model="user.email">
+									<p ng-show="userForm.email.$invalid " class="help-block">Enter a valid email.</p>
+								</div>
+								
+								<!-- mobile no -->
+								<div class="form-group" ng-class="{ 'has-error' : userForm.mobile.$invalid }">
+									<label>Mobile Number *</label>
+									<input type="number"  name="mobile" class="form-control" ng-model="user.mobile" required>
+									 <p ng-show="userForm.mobile.$invalid " class="help-block">Invalid ! mobile number </p> 
+								</div>
+								
+								<center>
+								<button type="submit" class="btn btn-primary"><span class="fa fa-paper-plane"></span> Book Appointment</button>
+								</center>
+							</form>
+						
+						
+						
+							
+						</div>
+					
+
+					
+					</div>
+				</div>
+	</div>
+</div>

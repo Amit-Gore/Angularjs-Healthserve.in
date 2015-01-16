@@ -1,0 +1,247 @@
+
+
+
+
+<!-- Page Content -->
+
+<div class="container">
+	
+    <div class="row visible-on">
+		<br>
+			<ol class="breadcrumb pull-left">
+                <li><a href="#">Home</a></li>
+                <li class="active">Search</li>
+            </ol>
+			
+			<div class="col-lg-6">
+			<center><h3>Showing  123  results for  Doctor name  </h3></center>
+			</div>
+			<div class="col-lg-3 pull-right">
+			
+			<div class="input-group">
+			  <input type="search" class="form-control" placeholder="Search " aria-describedby="basic-addon2" ng-model="searchText">
+			  <span class="input-group-addon" id="basic-addon2"><i class="fa fa-send"></i></span>
+			</div>
+			
+			
+			<!-- <input class="form-control" placeholder="Search"/> -->
+			
+			</div>
+			
+        <br>
+            
+    </div>
+    <!-- /.row -->
+
+    <!-- Search Context -->
+
+    <div class="row" id="contentHolder">
+	
+		<div class="col-md-2" >
+			<div class="[ panel1 panel1-default ] panel1-google-plus" style="padding:2px;margin-bottom:15px" > 
+				<div style="margin-bottom:15px;">	
+					<div class="heading_filter">
+						<h5><b style="color:#f8f8f8;font-weight:600;">Filter 1</b></h5>
+					</div>
+					
+					<tr>
+					  <th>&nbsp;&nbsp;<input type="checkbox" ng-click="predicate = 'name'; reverse=false">&nbsp;&nbsp;Name</input></th><br>
+					  <th>&nbsp;&nbsp;<input type="checkbox" ng-click="predicate = 'fees'; reverse=false">&nbsp;&nbsp;Fees</input></th><br>
+					  <th>&nbsp;&nbsp;<input type="checkbox" ng-click="predicate = 'location'; reverse=!reverse">&nbsp;&nbsp;Area</input></th>
+					</tr>
+				</div>
+				<div style="margin-bottom:15px;">	
+					<div class="heading_filter">
+						<h5><b style="color:#f8f8f8;font-weight:600;">Filter 1</b></h5>
+					</div>
+					
+					<tr>
+					  <th>&nbsp;&nbsp;<input type="checkbox" ng-click="predicate = 'name'; reverse=false">&nbsp;&nbsp;Name</input></th><br>
+					  <th>&nbsp;&nbsp;<input type="checkbox" ng-click="predicate = 'fees'; reverse=false">&nbsp;&nbsp;Fees</input></th><br>
+					  <th>&nbsp;&nbsp;<input type="checkbox" ng-click="predicate = 'location'; reverse=!reverse">&nbsp;&nbsp;Area</input></th>
+					</tr>
+				</div>
+				
+				<div style="margin-bottom:15px;">	
+					<div class="heading_filter">
+						<h5><b style="color:#f8f8f8;font-weight:600;">Filter 1</b></h5>
+					</div>
+					
+					<tr>
+					  <th>&nbsp;&nbsp;<input type="checkbox" ng-click="predicate = 'name'; reverse=false">&nbsp;&nbsp;Name</input></th><br>
+					  <th>&nbsp;&nbsp;<input type="checkbox" ng-click="predicate = 'fees'; reverse=false">&nbsp;&nbsp;Fees</input></th><br>
+					  <th>&nbsp;&nbsp;<input type="checkbox" ng-click="predicate = 'location'; reverse=!reverse">&nbsp;&nbsp;Area</input></th>
+					</tr>
+				</div>
+				
+			</div>
+		</div>
+		
+		<div class="col-md-7" style="bottom-margin:30px" ng-app="animateApp" ng-controller="mainController ">
+		  <div ng-controller="DoctorController"  >
+			<div class="card animate-repeat" dir-paginate="card in cards |orderBy: predicate:reverse | filter:searchText | itemsPerPage : 5" >
+                <div class="[ panel1 panel1-default ] panel1-google-plus" >
+						<div class="dropdown">
+							<span class="dropdown-toggle" type="button" style="cursor:pointer" title="Options" data-toggle="dropdown">
+								<span class="fa fa-share-alt fa-3x"></span>
+							</span>
+							<ul class="dropdown-menu" role="menu">
+								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+								<li role="presentation" class="divider"></li>
+								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+							</ul>
+						</div>
+						<div class="panel1-google-plus-tags" style="z-index: 1;" >
+							<ul>
+								<li ng-repeat="location in card.locations"><span style="color:crimson"><i class="fa fa-map-marker"></i></span> {{location}}</li>
+							</ul>
+						</div>
+					<div class="panel1-heading">
+						<div class="row" >
+							<div class="col-md-3 col-sm-3 col-lg-3" style="margin-bottom:2px" ><center>
+								<img style="width:70px; height:70px" class="img-circle" ng-src="{{card.img}}" alt="Mouse0270" />
+								<p style="color:rgb(87,89,91);font-weight:600;font-size:15px">Dr. {{card.name}} <br> <span style="color:rgb(67,185,123);font-size:13px"> {{card.degree | uppercase }}  </span></p>
+								
+								<!-- still not working  -->
+								
+								<div ng-show="card.image_service.length">
+									<span ng-repeat="service in card.image_service">
+										<img ng-src="{{service}}"/>  
+									</span> 
+								</div>
+								
+								
+								<!-- <img src="images/medical_icon.png" alt="Mouse0270" title="Medicine Facility" />
+								<img src="images/pathology_icon.png" alt="Mouse0270" title="Pathology" />
+								<img src="images/pathology_icon.png" alt="Mouse0270" title="vaccination Facility" />  --> </center>
+							</div>
+								
+							<div class="col-md-9 col-sm-9 col-lg-9"style="text-align:left;padding-top:10px;">
+									<!-- <div class="col-md-7 col-sm-7 col-lg-7">	
+										
+											<div style="margin-bottom:2px;">
+												<div class="col-md-12 col-sm-12 col-lg-12">
+													<center>
+													Today &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+													<span class="label label-info">
+														<img src="images/morningcolor.png" alt="Mouse0270" title="About" />
+													</span>&nbsp;
+													<span class="label label-info">
+														<img src="images/afternooncolor.png" alt="Mouse0270" title="About" />
+													</span>&nbsp;
+													<span class="label label-info">
+														<img src="images/eveningcolor.png" alt="Mouse0270" title="About" />
+													</span>&nbsp;
+													<span class="label label-info">
+														<img src="images/nightcolor.png" alt="Mouse0270" title="About" />
+													</span>
+												</div>
+												</center>
+											</div>
+											<div style="margin-bottom:2px;">
+												<div class="col-md-12 col-sm-12 col-lg-12">
+													<center>
+													<span style="text-align:left">Tomorrow</span> 
+													<span class="label label-info">
+														<img src="images/morningcolor.png" alt="Mouse0270" title="About" />
+													</span>&nbsp;
+													<span class="label label-info">
+														<img src="images/afternooncolor.png" alt="Mouse0270" title="About" />
+													</span>&nbsp;
+													<span class="label label-info">
+														<img src="images/eveningcolor.png" alt="Mouse0270" title="About" />
+													</span>&nbsp;
+													<span class="label label-info">
+														<img src="images/nightcolor.png" alt="Mouse0270" title="About" />
+													</span>
+												</div>
+												</center>
+											</div>
+											<div style="margin-bottom:2px;">
+												<div class="col-md-12 col-sm-12 col-lg-12">
+													<center>
+													Day After&nbsp;&nbsp;
+													<span class="label label-info">
+														<img src="images/morningcolor.png" alt="Mouse0270" title="About" />
+													</span>&nbsp;
+													<span class="label label-info">
+														<img src="images/afternooncolor.png" alt="Mouse0270" title="About" />
+													</span>&nbsp;
+													<span class="label label-info">
+														<img src="images/eveningcolor.png" alt="Mouse0270" title="About" />
+													</span>&nbsp;
+													<span class="label label-info">
+														<img src="images/nightcolor.png" alt="Mouse0270" title="About" />
+													</span>
+													</center>
+												</div>
+											</div>
+											
+											
+											
+									</div> -->
+								 <br>
+								 <br>
+									<div class="col-md-12 col-sm-12 col-lg-12" style="margin-bottom:10px;">	
+										<center><img src="images/7.png" alt="Mouse0270" title="About" />
+										<p style="color:rgb(87,89,91);"><i> {{card.about}}</i></p>		
+										</center>
+									</div> 
+									<div class="row">
+									<div class="col-md-5 col-sm-5 col-lg-5">	
+										
+										<p style="text-align:justify"><i class="fa fa-h-square fa-x"></i> {{card.hospital}}</p>		
+										
+									</div>
+									<div class="col-md-7 col-sm-7 col-lg-7">	
+										<p style="text-align:left">Fees : <i class="fa fa-inr"></i> {{card.fees | currency :"":2 }}	<button href="#primary_info" type="button" class="btn btn-primary btn-xs pull-right" ng-click="dropdown = !dropdown" ng-class="{ active: dropdown }" ><span style="color:white" class="fa fa-send"></span> Book Appointment </button></p>	
+									</div> 
+									</div> 
+							</div>
+						</div>
+					</div>
+				</div>
+					<!-- dorp down -->
+					<div class="[ panel1 panel1-default ] panel1-google-plus"  ng-show="dropdown" >
+						<h5> {{card.name}}<h5>
+						<h5 class="text-right">{{card.fees | currency :"":2}}</h5>
+						<a href="#/primary_info" type="button" class="btn btn-primary btn-xs"  ><span style="color:white" class="fa fa-send"></span> Book Appointment </a></p>
+					</div>
+            </div>
+			<br>
+			<center> <dir-pagination-controls template-url="webpage/dirPagination.html"></dir-pagination-controls> <center>
+          </div>
+        </div>
+			
+			<!-- map -->
+			
+		<div class="col-md-3">
+			<div class="card1" class="map" >
+				<!--  <iframe class="map" width="100%" height="607px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+						src="http://maps.google.com/maps?hl=en&amp;ie=UTF8&amp;ll=18.5203,73.8567&amp;spn=56.506174,79.013672&amp;t=m&amp;z=11&amp;output=embed"></iframe>
+			  -->
+			 <!-- <myMap id="map-canvas" style="width:200px;height:300px;padding:10px;"></myMap> -->
+			<div ng-controller="MapCtrl">
+				<div id="map"></div>
+				<div id="class" ng-repeat="marker in markers | orderBy : 'title'">
+					 <!-- <a  ng-click="openInfoWindow($event, marker)">{{marker.title}}</a> -->
+				</div>
+			</div>
+			 
+			 
+			 </div> 
+		</div>
+        
+
+    </div>
+    <!-- /.row -->
+
+</div>
+<!-- /.container -->
+
+
+
+
+
